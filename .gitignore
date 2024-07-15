@@ -1,2 +1,6 @@
-automated-bottle-storage
-navalis-oracle
+__pycache__
+todo.txt
+.node_modules
+venv
+package-lock.json
+package.json

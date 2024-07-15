@@ -1,0 +1,7 @@
+{
+    "POE_CLIENT_LOG": "./Path of Exile/logs/Client.txt",
+    "CURRENT_USER": "user_1",
+    "USERS": {
+        "user_1": "add_user_id_number_here"
+    }
+}
