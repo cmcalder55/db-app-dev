@@ -1,6 +1,7 @@
 __pycache__
-todo.txt
-.node_modules/*
+.vscode
+todo.*
+node_modules
 venv
 package-lock.json
 package.json
