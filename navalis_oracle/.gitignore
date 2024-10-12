@@ -1,6 +1,6 @@
 __pycache__
 todo.txt
-.node_modules
+.node_modules/*
 venv
 package-lock.json
 package.json
