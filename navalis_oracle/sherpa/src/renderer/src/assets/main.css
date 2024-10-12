@@ -143,6 +143,11 @@ code {
   }
 }
 
+/* dropdown menu */
+option {
+  color: #a3aaa5;
+}
+
 @media (max-width: 720px) {
   .text {
     font-size: 20px;

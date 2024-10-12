@@ -7,7 +7,7 @@ import subprocess
 from datetime import datetime, timezone
 
 SCRIPT_ROOT = os.path.abspath(__file__)
-TSC_PATH = os.path.join(os.path.dirname(os.path.dirname(SCRIPT_ROOT)), "sherpa", "tsc")
+TSC_PATH = os.path.join(os.path.dirname(os.path.dirname(SCRIPT_ROOT)), "sherpa_old", "tsc")
 LAB_DIR_PATH = os.path.join(TSC_PATH, "out", "compass.json")
 
 LAB_TYPES = ["Normal", "Cruel", "Merciless", "Uber"]
@@ -154,6 +154,12 @@ class LabyrinthMap():
             if arrow_coords in shortest_path:
                 fill = "blue"
             plot_arrows.append((*exits[idx][:4], fill))
+
+
+        routes = {}
+        for room in all_room_data:
+            routes[room["id"]] = room["exits"]
+        print(json.dumps(routes, indent=4))
 
         return plot_arrows, plot_circles
 
