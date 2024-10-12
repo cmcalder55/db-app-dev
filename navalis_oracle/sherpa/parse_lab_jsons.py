@@ -96,11 +96,12 @@ class LabyrinthMap():
             room_contents = room.get("contents", []) 
             fill_color = next((k for k in color_map["color"].keys() if k in room_contents), "default")
             outline_color = next((k for k in color_map["outline"].keys() if k in room_contents), "default")
+            key_exists = next((k for k in ["golden-key", "silver-key"] if k in room_contents), "")
             
             room_data = {
                 "id": room["id"],
                 "color": fill_color,
-                "key": None,
+                "key": key_exists,
                 "argus": "argus" in room_contents,
                 "required": room.get("name") == "aspirant's trial",
                 "center": room["center"],
@@ -108,9 +109,8 @@ class LabyrinthMap():
                 "out": room["out"],
                 "exits": list(map(int, room["exits"])),
                 "doors": [all_room_data[int(idx)-1]["center"] for idx in room["exits"]]
-            }            
-            
-
+            }    
+            paths.append(room_data)        
             
         paths = [{
             "id": room["id"],
