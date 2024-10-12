@@ -6,112 +6,12 @@ import subprocess
 
 from datetime import datetime, timezone
 
-SCRIPT_PATH = os.path.abspath(__file__)
-TSC_PATH = os.path.join(os.path.dirname(os.path.dirname(SCRIPT_PATH)), "sherpa", "tsc")
-LAB_DIR_PATH = os.path.join(TSC_PATH, "out")
+SCRIPT_ROOT = os.path.abspath(__file__)
+TSC_PATH = os.path.join(os.path.dirname(os.path.dirname(SCRIPT_ROOT)), "sherpa", "tsc")
+LAB_DIR_PATH = os.path.join(TSC_PATH, "out", "compass.json")
 
 LAB_TYPES = ["Normal", "Cruel", "Merciless", "Uber"]
 
-def current_date():
-    return datetime.now(timezone.utc)
-
-def fetch_data():
-
-    p = "%Y-%m-%d %H:%M:%S"
-
-    lab_data = get_lab_dicts()
-    if lab_data:
-        # check if data is up-to-date
-        now_utc = current_date()
-        pull_date = lab_data["date"]
-
-        if datetime.strptime(pull_date, p).date() != now_utc.date():
-            print("Date does not match, fetching data")
-
-            cwd = os.getcwd()
-            os.chdir(TSC_PATH)
-
-            # call tsc to redo 
-            result = subprocess.run([os.path.join(TSC_PATH, "start.bat")], capture_output=True, text=True)
-            # Print the output and error (if any)
-            # print('stdout:\n', result.stdout)                                     # TODO send to debug
-            print('stderr:\n', result.stderr)
-
-            os.chdir(cwd)
-
-            lab_data = get_lab_dicts()
-        else:
-            print("Dates match, using existing data")
-
-    # print(json.dumps(lab_data, indent = 4))
-    
-    return lab_data
-
-def get_lab_dicts():
-
-    data = {}
-
-    try:
-        with open(os.path.join(LAB_DIR_PATH, "compass.json"), 'r', encoding="utf-8") as f:
-            data = json.load(f)
-
-    except Exception as e:
-        print(f"Error loading labyrinth data: {e}")
-
-    return data
-
-def room_color(room):
-    if room.get("name") == "aspirant's trial":
-        return "#45b6fe"
-    if "golden-door" in room.get("contents"):
-        return "#e2be2d"
-    if "silver-door" in room.get("contents"):
-        return "#b5b7bb"
-    return "#00a86b"
-
-def is_key(room):
-    if "golden-key" in room.get("contents"):
-        return "gold"
-    if "silver-key" in room.get("contents"):
-        return "silver"
-    return ""
-
-def clean_data():
-    
-    cleaned = {}
-
-    lab_data = fetch_data()
-
-    izaro = ["weapon", "phase1", "phase2", "trap1", "trap2"]
-    drop_room_keys = ["dangerous", "content_directions"]
-
-    for lab in LAB_TYPES:
-        cleaned[lab] = {}
-        cleaned[lab]["graph"] = {}
-
-        lab_dict = lab_data[lab]
-        
-        cleaned[lab]["Izaro"] = {i:lab_dict[i] for i in izaro}
-        
-        cleaned[lab]["rooms"] = {}
-        for room in lab_dict["rooms"]:
-            for k in drop_room_keys:
-                room.pop(k)
-            
-            id = room.pop("id")
-            
-            exits = room.pop("exits") 
-            cleaned[lab]["graph"][id] = list(exits.items()) 
-            print(cleaned[lab]["graph"][id])
-            # cleaned[lab]["graph"][id] = list(exits.values()) 
-            
-            room["loc"] = (room.pop("x"), room.pop("y"))
-
-            cleaned[lab]["color"][id] = room_color(room) 
-            cleaned[lab]["outline"][id] = "#743aad" if "darkshrine" in room["contents"] else "#7f7f7f"
-            cleaned[lab]["rooms"][id] = room 
-
-    return cleaned
 
 class LabyrinthMap():
     def __init__(self, root, r=20, background="black", width=1000, height=300):
@@ -133,18 +33,14 @@ class LabyrinthMap():
 
     def on_select(self):
         tier = self.var.get()
-        if tier in ["Normal", "Cruel", "Merciless", "Uber"]:
-            self.plot(tier, self.r)
-        else:
-            print("Please select a valid labyrinth tier.")
+        self.plot(tier, self.r)
 
     def get_lab_dicts(self):
         try:
-            with open(os.path.join(LAB_DIR_PATH, "compass.json"), 'r', encoding="utf-8") as f:
+            with open(LAB_DIR_PATH, 'r', encoding="utf-8") as f:
                 return json.load(f)
-        
         except Exception as e:
-            print(f"Error loading labyrinth data: {e}")
+            print(f"Error loading labyrinth data:\n{e}")
             return {}
 
     def plot(self, lab_tier, r):
@@ -181,24 +77,41 @@ class LabyrinthMap():
         } for room in rooms]
 
         all_room_data.sort(key=lambda x: x["id"])  # Sort the list after it's created
-
-        def color(room):
-            if room.get("trial"):
-                return "#45b6fe"
-            if "golden-door" in room.get("contents"):
-                return "#e2be2d"
-            if "silver-door" in room.get("contents"):
-                return "#b5b7bb"
-            return "#00a86b"
-        
-        def key(room):
-            if "golden-key" in room.get("contents"):
-                return "gold"
-            if "silver-key" in room.get("contents"):
-                return "silver"
-            return ""
+        color_map = {
+            "outline": {
+                "default": "#7f7f7f",
+                "darkshrine": "#743aad"
+                },
+            "color": {
+                "default": "#00a86b",
+                "golden-door": "#e2be2d",
+                "silver-door": "#b5b7bb",
+                "trial": "#45b6fe"
+            }
+        }
 
         # Construct paths in a more concise way
+        paths = []
+        for room in all_room_data:
+            room_contents = room.get("contents", []) 
+            fill_color = next((k for k in color_map["color"].keys() if k in room_contents), "default")
+            outline_color = next((k for k in color_map["outline"].keys() if k in room_contents), "default")
+            
+            room_data = {
+                "id": room["id"],
+                "color": fill_color,
+                "key": None,
+                "argus": "argus" in room_contents,
+                "required": room.get("name") == "aspirant's trial",
+                "center": room["center"],
+                "outline": outline_color,
+                "out": room["out"],
+                "exits": list(map(int, room["exits"])),
+                "doors": [all_room_data[int(idx)-1]["center"] for idx in room["exits"]]
+            }            
+            
+
+            
         paths = [{
             "id": room["id"],
             "color": color(room),
@@ -279,7 +192,6 @@ class LabyrinthMap():
                     new_path.append(neighbor)
                     queue.append((neighbor, new_path))
 
-
         return "No valid path found"
 
     def create_triangle(self, x, y, radius):
@@ -345,13 +257,13 @@ class LabyrinthMap():
                 seen.add(arrow_sorted)
         return dupes
 
-# if __name__ == "__main__":
-#     # root = tk.Tk()
-#     # root.title("The Lord's Labyrinth")
-#     # root.geometry("1200x400")
+if __name__ == "__main__":
+    root = tk.Tk()
+    root.title("The Lord's Labyrinth")
+    root.geometry("1200x400")
 
-#     # LabyrinthMap(root)
-#     # root.mainloop()
+    LabyrinthMap(root)
+    root.mainloop()
 
-#     main()
+    # main()
     

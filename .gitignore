@@ -1,5 +1,5 @@
 __pycache__
-todo.txt
+TODO.*
 .node_modules
 venv
 package-lock.json
