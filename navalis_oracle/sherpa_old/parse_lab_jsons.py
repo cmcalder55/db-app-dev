@@ -13,6 +13,7 @@ LAB_DIR_PATH = os.path.join(TSC_PATH, "out", "compass.json")
 LAB_TYPES = ["Normal", "Cruel", "Merciless", "Uber"]
 
 
+
 class LabyrinthMap():
     def __init__(self, root, r=20, background="black", width=1000, height=300):
         self.color_map = {
@@ -159,7 +160,7 @@ class LabyrinthMap():
         routes = {}
         for room in all_room_data:
             routes[room["id"]] = room["exits"]
-        print(json.dumps(routes, indent=4))
+        # print(json.dumps(routes, indent=4))
 
         return plot_arrows, plot_circles
 
@@ -247,11 +248,42 @@ class LabyrinthMap():
 
         return self.canvas.create_line(x0, y0, x1, y1, **arrow_options)
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    root.title("The Lord's Labyrinth")
-    root.geometry("1200x400")
-
-    LabyrinthMap(root)
-    root.mainloop()
+def package_payload():
+    data = {}
+    try:
+        with open(LAB_DIR_PATH, 'r', encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as e:
+        print(f"Error loading labyrinth data:\n{e}")
+        return data
     
+    payload = []
+    data.pop("date")
+    for level, level_info in data.items():
+        level_dict = {
+            "level": level,
+            "nodes": [],
+            "edges": []
+        }
+        for room in level_info["rooms"]:
+            room_id = room["id"]
+            node = {"id": room_id, "x": room["x"], "y": room["y"]}
+            level_dict["nodes"].append(node)
+            for ex in room["exits"].values():
+                level_dict["edges"].append({"source": room_id, "target": ex})
+        payload.append(level_dict)
+    print(json.dumps(payload, indent=4))
+    
+    with open(os.path.join(TSC_PATH, "out", "payload.json"), "w") as f:
+        f.write(json.dumps(payload, indent=4))
+    
+    return payload
+
+if __name__ == "__main__":
+    # root = tk.Tk()
+    # root.title("The Lord's Labyrinth")
+    # root.geometry("1200x400")
+
+    # LabyrinthMap(root)
+    # root.mainloop()
+    package_payload()

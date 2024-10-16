@@ -1,7 +1,7 @@
 import { spawn } from 'child_process';
-import { processLabs } from './scrape_url.js';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import { processLabs } from './scrape_url.js';
 
 // Convert the URL to a file path
 const __filename = fileURLToPath(import.meta.url);

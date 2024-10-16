@@ -1,8 +1,6 @@
 import fetch from 'node-fetch';
 import { JSDOM } from 'jsdom';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
-
-
 function getUTC(): string {
     const now = new Date();
     
@@ -94,7 +92,7 @@ async function scrapeCompassData() {
                             try {
                                 const res = await fetch(link);
                                 // Check if the response is OK and the content type is JSON
-                                if (res.ok && res.headers.get("content-type")?.includes("application/json")) {
+                                if (res.status == 200 && res.headers.get("content-type")?.includes("application/json")) {
                                     const jsonData = await res.json();
                                     data[labType] = jsonData;
 

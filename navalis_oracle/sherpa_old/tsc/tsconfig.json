@@ -13,8 +13,10 @@
   "include": [
     "src/**/*",
     "dist/**/*",
-    "sherpa/**/*"
-  ]
+    "sherpa_old/**/*",
+    "/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
 }
 
 

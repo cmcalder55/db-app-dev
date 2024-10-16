@@ -1,10 +1,10 @@
 {
-  "date": "2024-02-25 21:37:25",
+  "date": "2024-10-15 09:02:37",
   "Normal": {
     "difficulty": "Normal",
-    "date": "2024-02-25",
-    "weapon": "TwoHandedMace",
-    "phase1": "Conduits",
+    "date": "2024-10-15",
+    "weapon": "SwordAndShield",
+    "phase1": "Portals",
     "phase2": "Idols",
     "trap1": "NoTrap",
     "trap2": "NoTrap",
@@ -20,7 +20,7 @@
         "y": "128",
         "dangerous": "false",
         "contents": [
-          "darkshrine"
+          "Trap gauntlet"
         ],
         "content_directions": [],
         "exits": {
@@ -41,23 +41,23 @@
         }
       },
       {
-        "name": "basilica halls",
+        "name": "sanitorium halls",
         "areacode": "",
         "id": "3",
         "x": "379",
         "y": "128",
         "dangerous": "false",
         "contents": [
-          "Switch puzzle"
+          "Escort gauntlet"
         ],
         "content_directions": [],
         "exits": {
-          "NE": "5",
-          "N": "4"
+          "NW": "4",
+          "NE": "5"
         }
       },
       {
-        "name": "domain path",
+        "name": "mansion passage",
         "areacode": "",
         "id": "4",
         "x": "450",
@@ -93,7 +93,6 @@
         "y": "128",
         "dangerous": "false",
         "contents": [
-          "Escort gauntlet",
           "darkshrine"
         ],
         "content_directions": [],
@@ -120,7 +119,7 @@
         }
       },
       {
-        "name": "basilica passage",
+        "name": "sanitorium passage",
         "areacode": "",
         "id": "8",
         "x": "691",
@@ -137,7 +136,7 @@
         }
       },
       {
-        "name": "basilica halls",
+        "name": "sanitorium halls",
         "areacode": "",
         "id": "9",
         "x": "726",
@@ -168,15 +167,15 @@
   },
   "Cruel": {
     "difficulty": "Cruel",
-    "date": "2024-02-25",
-    "weapon": "TwoHandedMace",
-    "phase1": "Idols",
-    "phase2": "Conduits",
+    "date": "2024-10-15",
+    "weapon": "TwoSwords",
+    "phase1": "Conduits",
+    "phase2": "Fonts",
     "trap1": "Darts",
-    "trap2": "Spikes",
-    "section1layout": "cruel_double_down",
+    "trap2": "BladeSentries",
+    "section1layout": "cruel_double_up",
     "section2layout": "triangle",
-    "section3layout": "compass_west2",
+    "section3layout": "plane",
     "rooms": [
       {
         "name": "estate walkways",
@@ -186,24 +185,24 @@
         "y": "128",
         "dangerous": "false",
         "contents": [
-          "Trap gauntlet"
+          "Escort gauntlet"
         ],
         "content_directions": [],
         "exits": {
-          "NE": "2",
-          "N": "3"
+          "N": "2",
+          "NE": "3"
         }
       },
       {
-        "name": "sanitorium passage",
+        "name": "domain path",
         "areacode": "",
         "id": "2",
         "x": "175",
-        "y": "172",
+        "y": "40",
         "dangerous": "false",
         "contents": [
-          "Escort gauntlet",
-          "darkshrine"
+          "Trap gauntlet",
+          "Switch puzzle"
         ],
         "content_directions": [],
         "exits": {
@@ -224,23 +223,24 @@
         }
       },
       {
-        "name": "estate walkways",
+        "name": "domain walkways",
         "areacode": "",
         "id": "4",
         "x": "311",
         "y": "128",
         "dangerous": "false",
         "contents": [
+          "Trap gauntlet",
           "darkshrine"
         ],
         "content_directions": [],
         "exits": {
-          "N": "5",
-          "NE": "6"
+          "NE": "5",
+          "NW": "6"
         }
       },
       {
-        "name": "sanitorium passage",
+        "name": "basilica passage",
         "areacode": "",
         "id": "5",
         "x": "379",
@@ -255,7 +255,7 @@
         }
       },
       {
-        "name": "sepulchre halls",
+        "name": "sanitorium halls",
         "areacode": "",
         "id": "6",
         "x": "450",
@@ -284,42 +284,27 @@
         }
       },
       {
-        "name": "estate walkways",
+        "name": "sanitorium halls",
         "areacode": "",
         "id": "8",
-        "x": "621",
+        "x": "587",
         "y": "128",
         "dangerous": "false",
         "contents": [
-          "Floor puzzle",
-          "Trap gauntlet"
+          "darkshrine"
         ],
         "content_directions": [],
         "exits": {
-          "N": "11",
-          "NE": "9"
+          "NW": "9",
+          "NE": "10"
         }
       },
       {
-        "name": "mansion halls",
+        "name": "sepulchre passage",
         "areacode": "",
         "id": "9",
-        "x": "726",
+        "x": "655",
         "y": "40",
-        "dangerous": "false",
-        "contents": [],
-        "content_directions": [],
-        "exits": {
-          "NW": "10",
-          "NE": "12"
-        }
-      },
-      {
-        "name": "basilica passage",
-        "areacode": "",
-        "id": "10",
-        "x": "691",
-        "y": "128",
         "dangerous": "false",
         "contents": [
           "silver-key",
@@ -327,12 +312,26 @@
         ],
         "content_directions": [],
         "exits": {
-          "NE": "9",
-          "SE": "11"
+          "NE": "10"
         }
       },
       {
-        "name": "basilica halls",
+        "name": "estate crossing",
+        "areacode": "",
+        "id": "10",
+        "x": "691",
+        "y": "128",
+        "dangerous": "false",
+        "contents": [],
+        "content_directions": [],
+        "exits": {
+          "SW": "9",
+          "NE": "11",
+          "N": "12"
+        }
+      },
+      {
+        "name": "mansion passage",
         "areacode": "",
         "id": "11",
         "x": "726",
@@ -344,8 +343,7 @@
         ],
         "content_directions": [],
         "exits": {
-          "NE": "12",
-          "NW": "10"
+          "NE": "12"
         }
       },
       {
@@ -363,15 +361,15 @@
   },
   "Merciless": {
     "difficulty": "Merciless",
-    "date": "2024-02-25",
-    "weapon": "SwordAndShield",
-    "phase1": "Portals",
-    "phase2": "Lieutenants",
-    "trap1": "FurnaceTraps",
-    "trap2": "SpinningBlades",
+    "date": "2024-10-16",
+    "weapon": "TwoSwords",
+    "phase1": "Essences",
+    "phase2": "Conduits",
+    "trap1": "Darts",
+    "trap2": "Spikes",
     "section1layout": "merciless_triple",
-    "section2layout": "watergate",
-    "section3layout": "bridge",
+    "section2layout": "car_appendum",
+    "section3layout": "compass_east",
     "rooms": [
       {
         "name": "estate path",
@@ -398,7 +396,7 @@
         "y": "84",
         "dangerous": "false",
         "contents": [
-          "argus"
+          "Trap gauntlet"
         ],
         "content_directions": [],
         "exits": {
@@ -407,14 +405,14 @@
         }
       },
       {
-        "name": "domain path",
-        "areacode": "dg_straight",
+        "name": "mansion passage",
+        "areacode": "eh_straight",
         "id": "3",
         "x": "209",
         "y": "172",
         "dangerous": "false",
         "contents": [
-          "Trap gauntlet"
+          "argus"
         ],
         "content_directions": [],
         "exits": {
@@ -435,8 +433,8 @@
         }
       },
       {
-        "name": "domain path",
-        "areacode": "dg_straight_bottleneck",
+        "name": "basilica passage",
+        "areacode": "rt_straight_bottleneck",
         "id": "5",
         "x": "311",
         "y": "128",
@@ -450,20 +448,17 @@
         }
       },
       {
-        "name": "sepulchre halls",
-        "areacode": "c_branch_door",
+        "name": "basilica halls",
+        "areacode": "",
         "id": "6",
-        "x": "379",
-        "y": "84",
+        "x": "414",
+        "y": "172",
         "dangerous": "false",
-        "contents": [
-          "golden-key",
-          "golden-door"
-        ],
+        "contents": [],
         "content_directions": [],
         "exits": {
-          "NE": "7",
-          "N": "8"
+          "NW": "7",
+          "NE": "8"
         }
       },
       {
@@ -471,11 +466,11 @@
         "areacode": "p_straight",
         "id": "7",
         "x": "450",
-        "y": "172",
+        "y": "84",
         "dangerous": "false",
         "contents": [
           "silver-key",
-          "Escort gauntlet"
+          "darkshrine"
         ],
         "content_directions": [],
         "exits": {
@@ -496,11 +491,44 @@
         }
       },
       {
-        "name": "basilica halls",
-        "areacode": "rt_branch_bottleneck_1",
+        "name": "mansion halls",
+        "areacode": "eh_branch_bottleneck_2",
         "id": "9",
-        "x": "621",
+        "x": "587",
         "y": "128",
+        "dangerous": "false",
+        "contents": [
+          "Trap gauntlet"
+        ],
+        "content_directions": [],
+        "exits": {
+          "NE": "11",
+          "NW": "10"
+        }
+      },
+      {
+        "name": "domain walkways",
+        "areacode": "dg_branch",
+        "id": "10",
+        "x": "691",
+        "y": "40",
+        "dangerous": "false",
+        "contents": [
+          "silver-door",
+          "Escort gauntlet"
+        ],
+        "content_directions": [],
+        "exits": {
+          "SE": "13",
+          "NW": "12"
+        }
+      },
+      {
+        "name": "sepulchre halls",
+        "areacode": "c_branch_bottleneck_2",
+        "id": "11",
+        "x": "691",
+        "y": "216",
         "dangerous": "false",
         "contents": [
           "silver-door",
@@ -508,146 +536,109 @@
         ],
         "content_directions": [],
         "exits": {
-          "NW": "10",
-          "NE": "11"
-        }
-      },
-      {
-        "name": "sanitorium passage",
-        "areacode": "p_straight",
-        "id": "10",
-        "x": "587",
-        "y": "40",
-        "dangerous": "false",
-        "contents": [
-          "silver-key",
-          "Trap gauntlet"
-        ],
-        "content_directions": [],
-        "exits": {
-          "NE": "11"
-        }
-      },
-      {
-        "name": "domain crossing",
-        "areacode": "dg_quad",
-        "id": "11",
-        "x": "691",
-        "y": "84",
-        "dangerous": "false",
-        "contents": [
-          "Switch puzzle",
-          "darkshrine"
-        ],
-        "content_directions": [],
-        "exits": {
-          "NW": "10",
-          "E": "12",
-          "NE": "13"
-        }
-      },
-      {
-        "name": "sepulchre passage",
-        "areacode": "",
-        "id": "12",
-        "x": "726",
-        "y": "172",
-        "dangerous": "false",
-        "contents": [
-          "silver-door"
-        ],
-        "content_directions": [],
-        "exits": {
-          "NE": "13"
+          "NW": "13",
+          "NE": "12"
         }
       },
       {
         "name": "aspirant's trial",
         "areacode": "",
-        "id": "13",
+        "id": "12",
         "x": "793",
         "y": "128",
         "dangerous": "false",
         "contents": [],
         "content_directions": [],
         "exits": {}
+      },
+      {
+        "name": "sanitorium passage",
+        "areacode": "p_straight",
+        "id": "13",
+        "x": "726",
+        "y": "128",
+        "dangerous": "false",
+        "contents": [
+          "silver-key",
+          "Switch puzzle"
+        ],
+        "content_directions": [],
+        "exits": {
+          "SE": "11",
+          "NE": "10"
+        }
       }
     ]
   },
   "Uber": {
     "difficulty": "Uber",
-    "date": "2024-02-25",
+    "date": "2024-10-16",
     "weapon": "TwoHandedMace",
-    "phase1": "ChargeDisruptors",
-    "phase2": "Idols",
-    "trap1": "FurnaceTraps",
-    "trap2": "SpinningBlades",
-    "section1layout": "arrow_down",
-    "section2layout": "chair_2",
-    "section3layout": "empty_room",
+    "phase1": "Essences",
+    "phase2": "Portals",
+    "trap1": "BladeSentries",
+    "trap2": "Spikes",
+    "section1layout": "chair",
+    "section2layout": "chair_3",
+    "section3layout": "ship_short",
     "rooms": [
       {
-        "name": "estate path",
-        "areacode": "oh_straight",
+        "name": "estate walkways",
+        "areacode": "",
         "id": "1",
         "x": "38",
         "y": "128",
         "dangerous": "false",
-        "contents": [
-          "silver-key",
-          "argus"
-        ],
+        "contents": [],
         "content_directions": [],
         "exits": {
-          "NE": "2"
+          "N": "2",
+          "NE": "3"
         }
       },
       {
-        "name": "domain walkways",
-        "areacode": "dg_branch_door",
+        "name": "sanitorium annex",
+        "areacode": "p_end_bottleneck",
         "id": "2",
-        "x": "106",
-        "y": "172",
+        "x": "72",
+        "y": "40",
         "dangerous": "false",
         "contents": [
-          "golden-door"
-        ],
-        "content_directions": [],
-        "exits": {
-          "N": "3",
-          "C": "4",
-          "NE": "4"
-        },
-        "secret_passage": "Statue"
-      },
-      {
-        "name": "domain enclosure",
-        "areacode": "dg_end_bottleneck",
-        "id": "3",
-        "x": "106",
-        "y": "84",
-        "dangerous": "false",
-        "contents": [
-          "golden-key",
-          "Switch puzzle"
+          "silver-key",
+          "Escort gauntlet"
         ],
         "content_directions": [],
         "exits": {}
       },
       {
-        "name": "sanitorium passage",
-        "areacode": "",
-        "id": "4",
+        "name": "estate walkways",
+        "areacode": "oh_branch_bottleneck_1",
+        "id": "3",
         "x": "175",
         "y": "128",
         "dangerous": "false",
         "contents": [
-          "silver-key"
+          "silver-key",
+          "darkshrine"
         ],
         "content_directions": [],
         "exits": {
-          "NE": "5"
+          "NE": "4",
+          "N": "5"
         }
+      },
+      {
+        "name": "mansion annex",
+        "areacode": "eh_end_bottleneck",
+        "id": "4",
+        "x": "209",
+        "y": "216",
+        "dangerous": "false",
+        "contents": [
+          "Trap gauntlet"
+        ],
+        "content_directions": [],
+        "exits": {}
       },
       {
         "name": "aspirant's trial",
@@ -663,16 +654,13 @@
         }
       },
       {
-        "name": "domain walkways",
-        "areacode": "dg_branch_bottleneck_1",
+        "name": "sepulchre halls",
+        "areacode": "",
         "id": "6",
         "x": "311",
         "y": "128",
         "dangerous": "false",
-        "contents": [
-          "Escort gauntlet",
-          "darkshrine"
-        ],
+        "contents": [],
         "content_directions": [],
         "exits": {
           "NW": "7",
@@ -680,43 +668,47 @@
         }
       },
       {
-        "name": "estate enclosure",
-        "areacode": "oh_end_bottleneck",
+        "name": "sepulchre passage",
+        "areacode": "",
         "id": "7",
         "x": "345",
         "y": "40",
         "dangerous": "false",
         "contents": [
-          "silver-key"
-        ],
-        "content_directions": [],
-        "exits": {}
-      },
-      {
-        "name": "sepulchre halls",
-        "areacode": "c_branch_bottleneck_1",
-        "id": "8",
-        "x": "414",
-        "y": "128",
-        "dangerous": "false",
-        "contents": [
-          "Trap gauntlet"
+          "silver-door"
         ],
         "content_directions": [],
         "exits": {
-          "NW": "9",
           "NE": "10"
         }
       },
       {
-        "name": "basilica annex",
-        "areacode": "",
+        "name": "estate walkways",
+        "areacode": "oh_branch",
+        "id": "8",
+        "x": "450",
+        "y": "128",
+        "dangerous": "false",
+        "contents": [
+          "darkshrine",
+          "argus"
+        ],
+        "content_directions": [],
+        "exits": {
+          "N": "10",
+          "NE": "9"
+        }
+      },
+      {
+        "name": "sanitorium annex",
+        "areacode": "p_end_bottleneck",
         "id": "9",
         "x": "450",
         "y": "216",
         "dangerous": "false",
         "contents": [
-          "silver-door"
+          "silver-key",
+          "Trap gauntlet"
         ],
         "content_directions": [],
         "exits": {}
@@ -735,78 +727,81 @@
         }
       },
       {
-        "name": "sanitorium passage",
-        "areacode": "p_straight_bottleneck",
+        "name": "basilica halls",
+        "areacode": "rt_branch",
         "id": "11",
         "x": "587",
         "y": "128",
         "dangerous": "false",
         "contents": [
-          "darkshrine"
+          "silver-door"
         ],
         "content_directions": [],
         "exits": {
-          "NE": "12"
-        }
+          "C": "14",
+          "NE": "14",
+          "NW": "12"
+        },
+        "secret_passage": "Fountain"
       },
       {
-        "name": "basilica halls",
-        "areacode": "rt_branch",
+        "name": "sepulchre halls",
+        "areacode": "c_branch_door",
         "id": "12",
         "x": "691",
-        "y": "216",
+        "y": "128",
         "dangerous": "false",
         "contents": [
-          "darkshrine"
+          "golden-door",
+          "Switch puzzle"
         ],
         "content_directions": [],
         "exits": {
-          "NE": "13",
-          "NW": "14"
+          "N": "13",
+          "NE": "16"
         }
       },
       {
-        "name": "mansion annex",
-        "areacode": "eh_end_bottleneck",
+        "name": "sanitorium annex",
+        "areacode": "p_end_bottleneck",
         "id": "13",
-        "x": "759",
-        "y": "216",
+        "x": "726",
+        "y": "40",
         "dangerous": "false",
         "contents": [
-          "silver-door",
-          "Trap gauntlet"
+          "golden-key",
+          "darkshrine"
         ],
         "content_directions": [],
         "exits": {}
       },
       {
-        "name": "sepulchre halls",
-        "areacode": "c_branch_bottleneck_1",
+        "name": "domain path",
+        "areacode": "",
         "id": "14",
         "x": "655",
-        "y": "84",
+        "y": "216",
         "dangerous": "false",
-        "contents": [
-          "darkshrine"
-        ],
+        "contents": [],
         "content_directions": [],
         "exits": {
-          "SE": "15",
-          "NE": "16"
+          "NE": "15"
         }
       },
       {
-        "name": "domain enclosure",
+        "name": "domain path",
         "areacode": "",
         "id": "15",
-        "x": "587",
-        "y": "40",
+        "x": "726",
+        "y": "216",
         "dangerous": "false",
         "contents": [
           "silver-door"
         ],
         "content_directions": [],
-        "exits": {}
+        "exits": {
+          "NE": "16"
+        }
       },
       {
         "name": "aspirant's trial",
