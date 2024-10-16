@@ -6,7 +6,6 @@ function App() {
       <div>
         <Graph />
       </div>
-      {/* <ChooseLevel></ChooseLevel> */}
     </>
   )
 }

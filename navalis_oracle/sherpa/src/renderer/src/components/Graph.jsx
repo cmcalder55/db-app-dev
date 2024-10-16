@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
@@ -52,7 +53,7 @@ const Graph = () => {
     const yScale = d3
       .scaleLinear()
       .domain(globalExtents.yExtent)
-      .range([height - margin.bottom, margin.top]); // Inverted Y for SVG (top-left origin)
+      .range([margin.top, height - margin.bottom]); // Inverted Y for SVG (top-left origin)
 
     // Create links (edges) between nodes
     svg
